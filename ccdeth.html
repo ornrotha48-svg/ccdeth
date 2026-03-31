@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Bean Haven | Artisan Coffee Shop</title>
+  <!-- Google Fonts: warm & modern -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fffaf5;
+      color: #2c2418;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #5e3a2b;
+      letter-spacing: -0.5px;
+    }
+    .logo i {
+      color: #c47a44;
+      margin-right: 6px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #4a3526;
+      transition: color 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      color: #c47a44;
+    }
+    .btn-order {
+      background: #c47a44;
+      color: white !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      transition: background 0.2s;
+    }
+    .btn-order:hover {
+      background: #a45f2e;
+    }
+
+    /* hero section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 0 4rem;
+      gap: 2rem;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #3b2a1f;
+      margin-bottom: 1rem;
+    }
+    .hero-content h1 span {
+      color: #c47a44;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #5f4a38;
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: #c47a44;
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: #a45f2e;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #c47a44;
+      color: #c47a44;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover {
+      background: #c47a44;
+      color: white;
+    }
+    .hero-image {
+      flex: 1;
+      text-align: center;
+    }
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 2rem;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      width: 100%;
+      object-fit: cover;
+      height: auto;
+    }
+
+    /* section style */
+    .section {
+      padding: 5rem 0;
+    }
+    .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #3b2a1f;
+    }
+    .section-sub {
+      text-align: center;
+      color: #9b7a5c;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    /* menu grid */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .menu-card {
+      background: white;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      transition: all 0.25s;
+      border: 1px solid #f3e5d8;
+    }
+    .menu-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+    }
+    .menu-img {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+    .menu-info {
+      padding: 1.5rem;
+    }
+    .menu-info h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .price {
+      color: #c47a44;
+      font-weight: 700;
+    }
+    .menu-info p {
+      color: #6e5a48;
+      font-size: 0.9rem;
+      margin: 0.5rem 0;
+    }
+
+    /* about & ambiance */
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: center;
+    }
+    .about-text {
+      flex: 1;
+    }
+    .about-text h3 {
+      font-size: 1.8rem;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1rem;
+      color: #4e3524;
+    }
+    .about-text p {
+      margin-bottom: 1rem;
+      color: #5f4a38;
+      line-height: 1.6;
+    }
+    .about-image {
+      flex: 1;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* gallery section */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .gallery-item {
+      border-radius: 1.2rem;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* location & hours */
+    .info-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .info-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      text-align: center;
+      flex: 1;
+      min-width: 240px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      border: 1px solid #f0e2d4;
+    }
+    .info-card i {
+      font-size: 2.5rem;
+      color: #c47a44;
+      margin-bottom: 1rem;
+    }
+    .info-card h4 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: #3b2a1f;
+    }
+
+    /* footer */
+    footer {
+      background: #2e241d;
+      color: #e6d5c2;
+      padding: 3rem 0 1.5rem;
+      margin-top: 2rem;
+    }
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer-col h4 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1rem;
+      color: #e6c9a8;
+    }
+    .footer-col p, .footer-col a {
+      color: #cbbdab;
+      text-decoration: none;
+      line-height: 1.8;
+    }
+    .social-icons i {
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      transition: color 0.2s;
+    }
+    .social-icons i:hover {
+      color: #c47a44;
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #4a3a2e;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .container {
+        padding: 0 1.2rem;
+      }
+      .section {
+        padding: 3rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fas fa-mug-hot"></i> CCDETH
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Visit</a></li>
+    </ul>
+    <a href="#menu" class="btn-order"><i class="fas fa-coffee"></i> Order Now</a>
+  </nav>
+
+  <main>
+    <!-- Hero Section with coffee picture -->
+    <div class="container" id="home">
+      <div class="hero">
+        <div class="hero-content">
+          <h1>Start your day with <span>perfect coffee</span></h1>
+          <p>Artisanal roasts, cozy atmosphere, and freshly baked treats. Welcome to CCDETH – your daily dose of warmth.</p>
+          <div class="hero-buttons">
+            <a href="#menu" class="btn-primary"><i class="fas fa-mug-saucer"></i> Explore Menu</a>
+            <a href="#contact" class="btn-outline"><i class="fas fa-location-dot"></i> Find Us</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Delicious freshly brewed coffee with latte art">
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Section -->
+    <div class="section" id="menu">
+      <div class="container">
+        <h2 class="section-title">Our Signature Brews</h2>
+        <p class="section-sub">Handcrafted with love, every sip tells a story</p>
+        <div class="menu-grid">
+          <!-- Espresso -->
+          <div class="menu-card">
+            <div class="menu-img" style="background-image: url('https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+            <div class="menu-info">
+              <h3>Classic Espresso <span class="price">$3.2</span></h3>
+              <p>Rich, bold, and smooth single-origin espresso shot.</p>
+            </div>
+          </div>
+          <!-- Latte -->
+          <div class="menu-card">
+            <div class="menu-img" style="background-image: url('https://images.pexels.com/photos/414630/pexels-photo-414630.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+            <div class="menu-info">
+              <h3>Velvet Latte <span class="price">$4.5</span></h3>
+              <p>Espresso with steamed milk & delicate foam art.</p>
+            </div>
+          </div>
+          <!-- Cappuccino -->
+          <div class="menu-card">
+            <div class="menu-img" style="background-image: url('https://images.pexels.com/photos/2299028/pexels-photo-2299028.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+            <div class="menu-info">
+              <h3>Caramel Cappuccino <span class="price">$4.9</span></h3>
+              <p>Bold espresso, velvety foam, caramel drizzle.</p>
+            </div>
+          </div>
+          <!-- Cold Brew -->
+          <div class="menu-card">
+            <div class="menu-img" style="background-image: url('https://images.pexels.com/photos/324028/pexels-photo-324028.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+            <div class="menu-info">
+              <h3>Nitro Cold Brew <span class="price">$4.2</span></h3>
+              <p>Smooth, creamy, and naturally sweet cold brew.</p>
+            </div>
+          </div>
+          <!-- Pastry -->
+          <div class="menu-card">
+            <div class="menu-img" style="background-image: url('https://images.pexels.com/photos/2608512/pexels-photo-2608512.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+            <div class="menu-info">
+              <h3>Croissant Duo <span class="price">$3.8</span></h3>
+              <p>Buttery, flaky pastry served with homemade jam.</p>
+            </div>
+          </div>
+          <!-- Mocha -->
+          <div class="menu-card">
+            <div class="menu-img" style="background-image: url('https://images.pexels.com/photos/2279087/pexels-photo-2279087.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+            <div class="menu-info">
+              <h3>Dark Chocolate Mocha <span class="price">$5.2</span></h3>
+              <p>Espresso, steamed milk, rich dark chocolate.</p>
+            </div>
+          </div>
+        </div>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>CCDETH | Artisan Coffee Shop</title>
+  <!-- Google Fonts: warm & modern -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fffaf5;
+      color: #2c2418;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #5e3a2b;
+      letter-spacing: -0.5px;
+    }
+    .logo i {
+      color: #c47a44;
+      margin-right: 6px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #4a3526;
+      transition: color 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      color: #c47a44;
+    }
+    .btn-order {
+      background: #c47a44;
+      color: white !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      transition: background 0.2s;
+    }
+    .btn-order:hover {
+      background: #a45f2e;
+    }
+
+    /* hero section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 0 4rem;
+      gap: 2rem;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #3b2a1f;
+      margin-bottom: 1rem;
+    }
+    .hero-content h1 span {
+      color: #c47a44;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #5f4a38;
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: #c47a44;
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: #a45f2e;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #c47a44;
+      color: #c47a44;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover {
+      background: #c47a44;
+      color: white;
+    }
+    .hero-image {
+      flex: 1;
+      text-align: center;
+    }
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 2rem;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      width: 100%;
+      object-fit: cover;
+      height: auto;
+    }
+
+    /* section style */
+    .section {
+      padding: 5rem 0;
+    }
+    .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #3b2a1f;
+    }
+    .section-sub {
+      text-align: center;
+      color: #9b7a5c;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    /* menu grid */
+    .</div>
+    </div>
+
+    <!-- About Section with coffee shop picture -->
+    <div class="section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text">
+            <h3><i class="fas fa-seedling"></i> From bean to cup</h3>
+            <p>CCDETH was born from a passion for quality coffee and genuine community. We source ethically grown beans from small farms and roast them locally to bring out vibrant, balanced flavors.</p>
+            <p>Our cozy space is designed for connection — whether you're catching up with friends, working remotely, or simply savoring a quiet moment. Every cup tells a story of craftsmanship and warmth.</p>
+            <p><strong>☕ Freshly roasted · 🌿 Sustainable · ❤️ Made with heart</strong></p>
+            <a href="#menu" class="btn-primary" style="display: inline-block; margin-top: 1rem;"><i class="fas fa-heart"></i> Taste the difference</a>
+          </div>
+          <div class="about-image">
+            <img src="https://images.pexels.com/photos/3764642/pexels-photo-3764642.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Coffee shop interior with barista pouring coffee">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Section (more coffee pictures) -->
+    <div class="section" id="gallery" style="background: #fef7ef;">
+      <div class="container">
+        <h2 class="section-title">Moments at CCDETH</h2>
+        <p class="section-sub">A glimpse into our coffee culture</p>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="https://images.pexels.com/photos/1307698/pexels-photo-1307698.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Pour over coffee brewing">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.pexels.com/photos/3756755/pexels-photo-3756755.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Coffee and pastry on wooden table">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.pexels.com/photos/3608324/pexels-photo-3608324.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cozy coffee shop corner">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.pexels.com/photos/3020919/pexels-photo-3020919.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Latte art heart shape">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Location & Hours -->
+    <div class="section" id="contact">
+      <div class="container">
+        <h2 class="section-title">Visit Our Café</h2>
+        <p class="section-sub">Come say hi, we're waiting for you</p>
+        <div class="info-cards">
+          <div class="info-card">
+            <i class="fas fa-location-dot"></i>
+            <h4>Our Address</h4>
+            <p>42 Brewery Lane, Downtown<br>Cityville, CV 12345</p>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-clock"></i>
+            <h4>Opening Hours</h4>
+            <p>Mon - Fri: 7:30am – 7pm<br>Sat - Sun: 8am – 6pm</p>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-phone-alt"></i>
+            <h4>Call Us</h4>
+            <p>+1 (555) 234-8765<br>hello@ccdeth.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h4><i class="fas fa-mug-hot"></i> CCDETH</h4>
+          <p>Artisan coffee & community<br>where every bean matters.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <p><a href="#home">Home</a><br><a href="#menu">Menu</a><br><a href="#about">Our Story</a><br><a href="#gallery">Gallery</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-twitter"></i>
+          </div>
+          <p style="margin-top: 1rem;">#CCDETHMoments</p>
+          </div>
+      </div>
+      <div class="copyright">
+        <p>© 2025 CCDETH Coffee Shop. Sip, relax, repeat. ☕</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
